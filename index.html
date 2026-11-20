@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전혜지 포트폴리오 · TUNE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Pretendard';src:url('fonts/PretendardVariable.woff2') format('woff2-variations');font-weight:45 920;font-style:normal;font-display:swap}
+:root{
+  /* layout: one 12-column sheet; every section opens with a 2px rule and a numbered spec header, like a technical drawing */
+  --bg:#E3E3DF;        /* poured concrete */
+  --panel:#EDEDE9;     /* primed board */
+  --ink:#151515;       /* blackened steel */
+  --steel:#66696B;     /* galvanized grey */
+  --hair:#B7B8B3;      /* hairline */
+  --signal:#FF4A00;    /* safety orange */
+  --display:'Archivo','Arial Narrow',Arial,sans-serif;
+  --body:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --mono:'Pretendard','Apple SD Gothic Neo',sans-serif;
+  --gut:clamp(16px,3.2vw,40px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+img,video{max-width:100%;height:auto;display:block}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+.num{font-variant-numeric:tabular-nums}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:var(--ink);color:var(--panel)}
+.bar .wrap{display:flex;align-items:center;gap:24px;height:44px}
+.bar .id{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:15px;letter-spacing:.02em;white-space:nowrap}
+.bar nav{display:flex;gap:18px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.bar nav::-webkit-scrollbar{display:none}
+.bar nav a{text-decoration:none;white-space:nowrap;color:#BFC0BB}
+.bar nav a:hover{color:#fff}
+.bar nav a b{color:var(--signal);font-weight:500;margin-right:4px}
+
+/* hero */
+.hero{padding:clamp(28px,5vw,64px) 0 0}
+.hero-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:10px;color:var(--steel)}
+.hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0 var(--gut);padding-top:clamp(20px,3vw,36px)}
+.name{grid-column:1/-1;margin:0;font-family:var(--display);font-weight:850;font-stretch:62%;text-transform:uppercase;font-size:clamp(72px,15.5vw,236px);line-height:.8;letter-spacing:-.01em}
+.name span{display:block}
+.name em{font-style:normal;color:var(--signal)}
+.hero-copy{grid-column:1/8;padding-top:clamp(20px,3vw,40px)}
+.hero-copy .role{font-family:var(--display);font-stretch:100%;font-weight:700;font-size:clamp(20px,2.2vw,28px);line-height:1.25;margin:0 0 14px;text-wrap:balance}
+.hero-copy p{max-width:36em;margin:0 0 10px;color:#2b2b2b}
+.hero-card{grid-column:8/13;padding-top:clamp(20px,3vw,40px);display:grid;grid-template-columns:132px 1fr;gap:16px;align-items:start}
+.hero-card img{width:132px;aspect-ratio:3/4;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.08);border:1px solid var(--ink)}
+.spec{margin:0;display:grid}
+.spec div{display:grid;grid-template-columns:92px 1fr;gap:10px;border-top:1px solid var(--hair);padding:6px 0}
+.spec div:last-child{border-bottom:1px solid var(--hair)}
+.spec dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--steel);text-transform:uppercase;padding-top:2px}
+.spec dd{margin:0;font-size:13.5px;line-height:1.5}
+
+/* figures strip */
+.figures{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(32px,4vw,56px);border-top:2px solid var(--ink);border-bottom:1px solid var(--ink)}
+.figures div{padding:16px 16px 18px 0;border-right:1px solid var(--hair)}
+.figures div+div{padding-left:16px}
+.figures div:last-child{border-right:0}
+.figures strong{display:block;font-family:var(--display);font-stretch:70%;font-weight:800;font-size:clamp(34px,4.2vw,58px);line-height:1;font-variant-numeric:tabular-nums}
+.figures strong small{font-size:.42em;font-weight:700;margin-left:2px}
+.figures span{display:block;margin-top:8px;font-size:12.5px;line-height:1.45;color:#3a3a3a}
+.figures .mono{color:var(--steel);margin-top:6px}
+
+/* section header */
+section{padding-top:clamp(56px,7vw,104px)}
+.sh{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:6px 18px;border-top:2px solid var(--ink);padding-top:12px;margin-bottom:clamp(24px,3vw,40px)}
+.sh .no{font-family:var(--mono);font-size:12px;color:var(--signal);align-self:start;padding-top:6px}
+.sh h2{margin:0;font-family:var(--display);font-stretch:62%;font-weight:850;text-transform:uppercase;font-size:clamp(44px,7vw,96px);line-height:.86;letter-spacing:-.005em}
+.sh h2 span{display:block;font-family:var(--body);font-stretch:100%;font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;margin-top:10px;color:var(--steel)}
+.sh .meta{color:var(--steel);text-align:right}
+
+/* about */
+.about{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut)}
+.about .lead{grid-column:1/6}
+.about .lead h3{margin:0 0 16px;font-size:clamp(22px,2.4vw,30px);line-height:1.38;font-weight:600;text-wrap:balance}
+.about .lead p{margin:0 0 12px;max-width:34em}
+.spec.obs{margin-top:22px}
+.about .points{grid-column:7/13;display:grid;gap:0}
+.pt{display:grid;grid-template-columns:40px 1fr 112px;gap:14px;align-items:start;border-top:1px solid var(--ink);padding:16px 0 20px}
+.pt:last-child{border-bottom:1px solid var(--ink)}
+.pt .mono{color:var(--signal);padding-top:4px}
+.pt h4{margin:0 0 6px;font-size:16.5px;font-weight:600}
+.pt p{margin:0;color:#2f2f2f;font-size:14.5px}
+
+/* fit matrix */
+.matrix{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink);background:var(--panel)}
+.col{padding:20px 20px 22px;border-right:1px solid var(--ink);display:flex;flex-direction:column;gap:14px}
+.col:last-child{border-right:0}
+.col .tag{display:flex;justify-content:space-between;align-items:baseline}
+.col .tag b{font-family:var(--display);font-stretch:70%;font-weight:800;font-size:28px;line-height:1;text-transform:uppercase}
+.col .tag .mono{color:var(--steel)}
+.col .ask{margin:0;padding:10px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);font-size:13px;color:var(--steel);line-height:1.55}
+.col .ask::before{content:"TUNE ASKS  ";font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink)}
+.col ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.col li{display:grid;grid-template-columns:44px 1fr;gap:8px;font-size:14px;line-height:1.5}
+.col li a{font-family:var(--mono);font-size:11px;text-decoration:none;color:var(--signal);padding-top:2px}
+.col li a:hover{text-decoration:underline}
+.req{display:grid;grid-template-columns:200px 1fr;gap:16px;border:1px solid var(--ink);border-top:0;padding:14px 20px;align-items:baseline}
+.req .mono{color:var(--steel)}
+.req p{margin:0;font-size:14px}
+.req b{font-weight:600}
+
+/* index */
+.index{width:100%;border-collapse:collapse;font-size:14px}
+.index th{font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);text-align:left;padding:0 12px 8px 0;border-bottom:1px solid var(--ink)}
+.index td{padding:12px 12px 12px 0;border-bottom:1px solid var(--hair);vertical-align:baseline}
+.index tr{cursor:pointer}
+.index tbody tr:hover td{background:var(--panel)}
+.index td:first-child{font-family:var(--mono);font-size:12px;color:var(--signal);width:64px}
+.index .t{font-family:var(--display);font-stretch:75%;font-weight:750;font-size:19px;text-transform:uppercase;line-height:1.15}
+.index .t a{text-decoration:none}
+.index .k{display:block;font-size:12.5px;color:var(--steel);font-family:var(--body);font-stretch:100%;text-transform:none;font-weight:400;margin-top:2px}
+.index .yr{font-family:var(--mono);font-size:12px;white-space:nowrap;color:var(--steel)}
+.chips{display:flex;gap:4px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:.06em;border:1px solid var(--ink);padding:1px 6px;line-height:1.6;white-space:nowrap}
+.chip.c{background:var(--ink);color:var(--panel)}
+.chip.a{background:var(--signal);border-color:var(--signal);color:#fff}
+.chip.p{background:transparent}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;color:var(--steel);font-size:12px;align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.table-scroll{overflow-x:auto}
+
+/* case */
+.case{display:grid;grid-template-columns:repeat(12,1fr);gap:0 var(--gut);border-top:1px solid var(--ink);padding:28px 0 clamp(40px,5vw,72px)}
+.case-head{grid-column:1/5;align-self:start;position:sticky;top:64px}
+.case-no{font-family:var(--mono);font-size:12px;color:var(--signal);display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding-bottom:6px;margin-bottom:12px}
+.case-no span{color:var(--steel)}
+.case h3{margin:0;font-family:var(--display);font-stretch:62%;font-weight:850;font-size:clamp(40px,4.6vw,64px);line-height:.88;text-transform:uppercase;text-wrap:balance}
+.case .sub{margin:12px 0 18px;font-size:15px;font-weight:600;line-height:1.45}
+.case .chips{margin-bottom:18px}
+.case-main{grid-column:5/13;display:grid;gap:22px;min-width:0}
+.case-main>p{margin:0;max-width:40em}
+.did{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 var(--gut);border-top:1px solid var(--ink)}
+.did li{border-bottom:1px solid var(--hair);padding:9px 0 9px 22px;position:relative;font-size:14px;line-height:1.5}
+.did li::before{content:"";position:absolute;left:0;top:16px;width:10px;height:2px;background:var(--signal)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ink)}
+.metrics div{padding:14px;border-right:1px solid var(--hair)}
+.metrics div:last-child{border-right:0}
+.metrics strong{display:block;font-family:var(--display);font-stretch:70%;font-weight:800;font-size:clamp(26px,2.6vw,36px);line-height:1;font-variant-numeric:tabular-nums}
+.metrics strong small{font-size:.5em}
+.metrics span{display:block;font-size:12px;color:#3a3a3a;margin-top:6px;line-height:1.4}
+.metrics .mono{color:var(--steel);margin-top:4px;font-size:10px}
+.note{font-size:12px;color:var(--steel);margin:-12px 0 0}
+
+/* copy lines */
+.copy{border:1px solid var(--ink);background:var(--ink);color:var(--panel);padding:18px 20px}
+.copy .mono{color:#9c9e9a;display:block;margin-bottom:10px}
+.copy ol{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.copy li{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:baseline;border-top:1px solid #3a3a3a;padding-top:10px}
+.copy li:first-child{border-top:0;padding-top:0}
+.copy li b{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--signal)}
+.copy q{font-size:clamp(18px,1.9vw,23px);font-weight:600;quotes:"“" "”"}
+.copy li span{font-size:12px;color:#9c9e9a;text-align:right}
+
+/* figures */
+.figs{display:grid;gap:14px}
+.f2{grid-template-columns:repeat(2,1fr)}
+.f3{grid-template-columns:repeat(3,1fr)}
+.f4{grid-template-columns:repeat(4,1fr)}
+.span2{grid-column:span 2}
+.fig{margin:0;min-width:0}
+.fig .frame{position:relative;display:block;width:100%;padding:0;border:1px solid var(--ink);background:var(--panel);cursor:zoom-in;overflow:hidden}
+.fig .frame img{width:100%;height:100%;object-fit:cover}
+.fig .frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(var(--signal),var(--signal)) top 6px left 6px/10px 1px no-repeat,
+  linear-gradient(var(--signal),var(--signal)) top 6px left 6px/1px 10px no-repeat;opacity:0;transition:opacity .15s}
+.fig .frame:hover::after{opacity:1}
+.fig video{width:100%;height:auto;object-fit:cover;border:1px solid var(--ink);background:#000}
+.fig .frame.top img{object-position:50% 0}
+.fig figcaption{display:flex;gap:10px;margin-top:6px;font-size:12.5px;line-height:1.45;color:#333}
+.fig figcaption b{font-family:var(--mono);font-weight:400;font-size:10.5px;color:var(--steel);white-space:nowrap;padding-top:1px}
+.r169{aspect-ratio:16/9}.r916{aspect-ratio:9/16}.r34{aspect-ratio:3/4}.r11{aspect-ratio:1/1}.r43{aspect-ratio:4/3}
+.tall .frame{aspect-ratio:1/3}
+.top3{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink)}
+.top3>div{display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;padding:12px;border-right:1px solid var(--hair);align-items:start}
+.top3>div:last-child{border-right:0}
+.top3 img{width:56px;aspect-ratio:9/16;object-fit:cover;border:1px solid var(--ink)}
+.top3 .mono{color:var(--signal);font-size:10px}
+.top3 p{margin:2px 0 6px;font-weight:600;font-size:14.5px;line-height:1.35}
+.top3 dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0 8px;font-size:12px}
+.top3 dt{color:var(--steel);font-family:var(--mono);font-size:10px;padding-top:2px}
+.top3 dd{margin:0;font-variant-numeric:tabular-nums}
+.sublabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);border-bottom:1px solid var(--hair);padding-bottom:6px;margin:0 0 -8px}
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);padding:7px 12px;background:transparent}
+.btn:hover{background:var(--ink);color:var(--panel)}
+.btn::after{content:"↗"}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--ink)}
+.trio>div{padding:16px;border-right:1px solid var(--hair);display:grid;gap:8px;align-content:start}
+.trio>div:last-child{border-right:0}
+.trio .mono{color:var(--signal)}
+.trio h4{margin:0;font-size:16px;font-weight:600;line-height:1.35}
+.trio p{margin:0;font-size:13.5px;color:#333;line-height:1.6}
+.trio .who{font-size:12px;color:var(--steel);font-family:var(--mono);letter-spacing:.02em}
+
+/* archive */
+.arch{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.acard{border-top:2px solid var(--ink);padding-top:12px;display:grid;gap:12px;align-content:start}
+.acard .mono{color:var(--steel);display:flex;justify-content:space-between}
+.acard h3{margin:0;font-family:var(--display);font-stretch:70%;font-weight:800;font-size:30px;line-height:1;text-transform:uppercase}
+.acard h3 span{display:block;font-family:var(--body);font-stretch:100%;font-weight:600;font-size:15px;text-transform:none;margin-top:6px}
+.acard p{margin:0;font-size:14px;color:#333}
+.acard .stat{display:flex;gap:18px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:8px 0}
+.acard .stat b{display:block;font-family:var(--display);font-stretch:70%;font-weight:800;font-size:26px;line-height:1}
+.acard .stat span{font-size:11.5px;color:var(--steel)}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.reels figure{margin:0}
+.reels img{width:100%;aspect-ratio:9/14;object-fit:cover;border:1px solid var(--ink)}
+.reels figcaption{font-family:var(--mono);font-size:10.5px;margin-top:4px;color:var(--steel)}
+
+/* record */
+.record{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut)}
+.record .main{grid-column:1/-1}
+.record .side{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:var(--gut);align-content:start;margin-top:12px}
+.rows{display:grid}
+.row{display:grid;grid-template-columns:180px 1fr;gap:16px;border-top:1px solid var(--hair);padding:14px 0}
+.row:first-child{border-top:1px solid var(--ink)}
+.row .when{font-family:var(--mono);font-size:11.5px;color:var(--steel);line-height:1.6}
+.row .when b{display:block;color:var(--ink);font-weight:500}
+.row h4{margin:0 0 4px;font-size:16px;font-weight:600}
+.row h4 small{font-weight:400;color:var(--steel);font-size:13px;margin-left:6px}
+.row p{margin:0;font-size:14px;color:#333}
+.row ul{margin:6px 0 0;padding-left:16px;font-size:14px;color:#333;display:grid;gap:4px}
+.row ul b{font-weight:600;color:var(--ink)}
+.blk h4{font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin:0 0 6px;border-bottom:1px solid var(--ink);padding-bottom:6px}
+.blk dl{margin:0;display:grid}
+.blk dl div{display:grid;grid-template-columns:72px 1fr;gap:12px;border-bottom:1px solid var(--hair);padding:7px 0;font-size:13.5px;line-height:1.5}
+.blk dt{font-family:var(--mono);font-size:11px;color:var(--steel);padding-top:1px}
+.blk dd{margin:0}
+.tools{display:flex;flex-wrap:wrap;gap:6px;padding-top:8px}
+.tools span{border:1px solid var(--ink);font-size:12.5px;padding:2px 8px}
+.tools span.hl{background:var(--ink);color:var(--panel)}
+.tools-group{display:grid;grid-template-columns:72px 1fr;gap:12px;border-bottom:1px solid var(--hair);padding:8px 0 10px}
+.tools-group .mono{color:var(--steel);padding-top:12px;font-size:10px}
+
+/* contact */
+.contact{background:var(--ink);color:var(--panel);margin-top:clamp(56px,7vw,104px);padding:clamp(40px,6vw,80px) 0 28px}
+.contact .big{font-family:var(--display);font-stretch:62%;font-weight:850;text-transform:uppercase;font-size:clamp(56px,10vw,150px);line-height:.84;margin:0 0 32px}
+.contact .big em{font-style:normal;color:var(--signal)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #444}
+.cgrid div{padding:16px 16px 18px 0;border-right:1px solid #333}
+.cgrid div+div{padding-left:16px}
+.cgrid div:last-child{border-right:0}
+.cgrid .mono{color:#8f918d;display:block;margin-bottom:6px}
+.cgrid a,.cgrid span.v{font-size:clamp(16px,1.7vw,21px);font-weight:500;text-decoration:none}
+.cgrid a:hover{color:var(--signal)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:40px;color:#8f918d;border-top:1px solid #333;padding-top:12px}
+
+/* lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);max-height:92vh}
+dialog.lb::backdrop{background:rgba(15,15,15,.92)}
+dialog.lb img{max-width:min(1200px,94vw);max-height:82vh;width:auto;margin:0 auto;border:1px solid #555}
+dialog.lb .lbbar{display:flex;justify-content:space-between;gap:16px;align-items:center;color:#d8d8d4;padding-top:10px;font-size:13px}
+dialog.lb button{font-family:var(--mono);font-size:11px;letter-spacing:.08em;background:transparent;color:#fff;border:1px solid #777;padding:6px 12px;cursor:pointer}
+
+/* responsive */
+@media (max-width:1000px){
+  .hero-copy{grid-column:1/-1}
+  .hero-card{grid-column:1/-1}
+  .about .lead,.about .points{grid-column:1/-1}
+  .matrix{grid-template-columns:1fr}
+  .col{border-right:0;border-bottom:1px solid var(--ink)}
+  .col:last-child{border-bottom:0}
+  .case-head{grid-column:1/-1;position:static;margin-bottom:20px}
+  .case-main{grid-column:1/-1}
+  .arch{grid-template-columns:1fr}
+  .record .main,.record .side{grid-column:1/-1}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metrics div:nth-child(2){border-right:0}
+  .metrics div:nth-child(n+3){border-top:1px solid var(--hair)}
+}
+@media (max-width:640px){
+  body{font-size:14.5px}
+  .bar .id{display:none}
+  .figures{grid-template-columns:1fr}
+  .figures div,.figures div+div{padding-left:0;border-right:0;border-bottom:1px solid var(--hair)}
+  .figures div:last-child{border-bottom:0}
+  .bar nav{margin-left:0}
+  .sh{grid-template-columns:auto 1fr}
+  .sh .meta{display:none}
+  .hero-card{grid-template-columns:96px 1fr}
+  .hero-card img{width:96px}
+  .spec div{grid-template-columns:78px 1fr}
+  .did{grid-template-columns:1fr}
+  .f3,.f4{grid-template-columns:repeat(2,1fr)}
+  .span2{grid-column:1/-1}
+  .top3,.trio{grid-template-columns:1fr}
+  .top3>div,.trio>div{border-right:0;border-bottom:1px solid var(--hair)}
+  .top3>div:last-child,.trio>div:last-child{border-bottom:0}
+  .req{grid-template-columns:1fr;gap:4px}
+  .row{grid-template-columns:1fr;gap:4px}
+  .cgrid{grid-template-columns:1fr}
+  .cgrid div{border-right:0;padding-left:0!important;border-bottom:1px solid #333}
+  .copy li{grid-template-columns:24px 1fr}
+  .copy li span{grid-column:2;text-align:left}
+  .index .hide-s{display:none}
+}
+
+/* event note */
+.note-top{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut);margin-bottom:28px}
+.note-lead{grid-column:1/7}
+.note-lead h3{margin:0 0 12px;font-size:clamp(20px,2.1vw,26px);line-height:1.4;font-weight:600;text-wrap:balance}
+.note-lead p{margin:0;max-width:36em}
+.note-top .spec{grid-column:7/13}
+.eval{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);background:var(--panel)}
+.ev{padding:18px 20px 20px}
+.ev+.ev{border-left:1px solid var(--ink)}
+.ev-h{display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:8px;margin-bottom:12px}
+.ev-h .mono{color:var(--signal)}
+.ev-h b{font-size:16px;font-weight:600}
+.ev ol{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:ev}
+.ev li{counter-increment:ev;display:grid;grid-template-columns:22px 1fr;column-gap:6px;font-size:14px;line-height:1.6;color:#333}
+.ev li::before{content:counter(ev,decimal-leading-zero);font-family:var(--mono);font-size:10.5px;color:var(--steel);padding-top:3px;grid-row:1/3}
+.ev li b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
+.tl-wrap{margin-top:28px}
+.tl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
+.tl li{padding:14px 16px 16px 0;position:relative}
+.tl li+li{padding-left:16px;border-left:1px solid var(--hair)}
+.tl li::before{content:"";position:absolute;top:-6px;left:0;width:10px;height:10px;background:var(--signal)}
+.tl li+li::before{left:16px}
+.tl .mono{color:var(--steel)}
+.tl h4{margin:6px 0 6px;font-family:var(--display);font-stretch:75%;font-weight:800;font-size:19px;line-height:1.15;text-transform:uppercase}
+.tl p{margin:0;font-size:13.5px;line-height:1.6;color:#333}
+.note-end{margin:22px 0 0;max-width:46em}
+.src{margin-top:14px;color:var(--steel);font-size:10.5px;line-height:1.8;text-transform:none;letter-spacing:.02em}
+.guide{color:var(--steel);margin-top:4px}
+@media (max-width:1000px){.note-lead,.note-top .spec{grid-column:1/-1}.tl{grid-template-columns:1fr 1fr}.tl li:nth-child(3){padding-left:0;border-left:0}.tl li:nth-child(3)::before{left:0}}
+@media (max-width:640px){.eval{grid-template-columns:1fr}.ev+.ev{border-left:0;border-top:1px solid var(--ink)}.tl{grid-template-columns:1fr}.tl li,.tl li+li{padding-left:0;border-left:0}.tl li+li::before{left:0}}
+
+.part{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;border-top:2px solid var(--ink);padding-top:12px;margin-top:22px}
+.part .mono{color:var(--signal)}
+.part .mono:last-child{color:var(--steel)}
+.part h4{margin:0;font-size:18px;font-weight:700}
+.part-anchor{scroll-margin-top:64px;height:0}
+
+.cat{display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:baseline;margin-top:clamp(48px,6vw,80px);padding:14px 16px;background:var(--ink);color:var(--panel)}
+.cat .mono{color:var(--signal)}
+.cat .mono:nth-of-type(2){color:#a9aaa6}
+.cat h3{margin:0;font-size:clamp(20px,2.2vw,26px);font-weight:700}
+.cat p{grid-column:2/4;margin:0;font-size:13.5px;color:#c9cac6}
+.cat+.case{border-top:0}
+.case h3,.sh h2{overflow-wrap:normal}
+.index tr.grp td{background:transparent;padding:18px 0 6px;border-bottom:1px solid var(--ink);font-weight:700;font-size:14.5px;cursor:default}
+.index tr.grp td .mono{color:var(--signal);margin-right:8px}
+.index tr.grp:hover td{background:transparent}
+.arch.two{grid-template-columns:repeat(2,1fr)}
+@media (max-width:1000px){.arch.two{grid-template-columns:1fr}}
+
+/* works v2 */
+.w{border-top:1px solid var(--ink);padding:26px 0 44px}
+.cat+.w{border-top:0}
+.w-top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.w-top .no{color:var(--signal)}
+.w-top h3{margin:0;font-family:var(--display);font-stretch:70%;font-weight:850;font-size:clamp(30px,3.4vw,46px);line-height:1;text-transform:uppercase}
+.tag{border:1px solid var(--ink);font-size:12px;padding:2px 8px;align-self:center}
+.w-top .per{margin-left:auto;color:var(--steel)}
+.w-ko{margin:6px 0 18px;font-size:15px;font-weight:600}
+.brief{display:grid;grid-template-columns:1fr 1.2fr 1.2fr;gap:0 28px;border-top:1px solid var(--hair);padding-top:14px;margin-bottom:20px}
+.brief .lb{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+.brief p{margin:0;font-size:14.5px;line-height:1.6;color:#2b2b2b}
+.brief ul{margin:0;padding:0;list-style:none;display:grid;gap:3px}
+.brief li{font-size:14px;line-height:1.55;color:#2b2b2b;padding-left:12px;position:relative}
+.brief li::before{content:"-";position:absolute;left:0;color:var(--steel)}
+mark{background:linear-gradient(transparent 55%,#ffd9c7 55%);color:inherit;font-weight:700;padding:0 1px}
+.strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.sf{margin:0;flex:0 0 auto;scroll-snap-align:start}
+.sf .frame{display:block;padding:0;border:1px solid var(--ink);background:var(--panel);cursor:zoom-in}
+.sf img,.sf video{height:clamp(200px,22vw,300px);width:auto;max-width:none;display:block}
+.sf video{border:1px solid var(--ink);background:#000}
+.sf figcaption{font-size:12px;color:var(--steel);margin-top:6px;max-width:100%}
+.sub-row{border-top:1px dashed var(--hair);padding-top:14px;margin-top:18px}
+.sub-h{display:flex;gap:10px;align-items:baseline}
+.sub-h .mono:first-child{color:var(--signal)}
+.sub-h .mono:last-child{margin-left:auto;color:var(--steel)}
+.sub-h b{font-size:16px}
+.sub-row>p{margin:4px 0 12px;font-size:14px;color:#2b2b2b}
+.w .links{margin-top:12px}
+.pt-img{width:112px;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--ink);filter:grayscale(.2)}
+.reels.one{grid-template-columns:1fr 1fr 1fr}
+.reels.one figure{grid-column:1/2}
+@media (max-width:1000px){.brief{grid-template-columns:1fr;gap:14px}}
+@media (max-width:640px){.pt{grid-template-columns:28px 1fr 72px}.pt-img{width:72px}.sf img,.sf video{height:180px}.w-top .per{margin-left:0;width:100%}}
+
+.index td.th{width:150px;padding-right:20px}
+.index td.th img{width:136px;aspect-ratio:16/10;object-fit:cover;object-position:50% 30%;border:1px solid var(--ink);display:block;transition:filter .15s}
+.index tbody tr:hover td.th img{filter:contrast(1.08)}
+.index td{vertical-align:middle}
+@media (max-width:640px){.index td.th{width:84px;padding-right:10px}.index td.th img{width:76px}}
+
+.hero-grid{align-items:start}
+.hero-copy,.hero-card{padding-top:clamp(24px,3vw,40px)}
+.hero-card{grid-template-columns:150px 1fr;gap:20px;align-items:stretch}
+.hero-card img{width:150px;height:200px;aspect-ratio:auto}
+.hero-card .spec{grid-template-rows:repeat(4,1fr)}
+.hero-card .spec div{align-items:center;padding:0}
+.hero{padding-bottom:clamp(8px,2vw,24px)}
+.chart{margin:4px 0 8px;border:1px solid var(--ink);background:var(--panel);padding:18px 20px 14px}
+.chart-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.chart-h b{font-size:16px}
+.chart-h span{font-size:12px;color:var(--steel)}
+.chart svg{width:100%;height:auto;display:block}
+.chart .grid{stroke:var(--hair);stroke-width:1}
+.chart .base{stroke:var(--ink);stroke-width:1.5}
+.chart .start{stroke:var(--ink);stroke-dasharray:4 4}
+.chart .st{font:700 13px var(--body);fill:var(--ink);text-anchor:end}
+.chart rect.pre{fill:#bdbdb8}
+.chart rect.post{fill:var(--ink)}
+.chart rect.cur{fill:var(--ink);opacity:.45}
+.chart .val{font:700 13px var(--body);fill:var(--ink);text-anchor:middle;font-variant-numeric:tabular-nums}
+.chart .note7{font:600 12px var(--body);fill:var(--steel);text-anchor:middle}
+.chart .mo{font:13px var(--body);fill:var(--steel);text-anchor:middle}
+.chart figcaption{font-size:12px;color:var(--steel);margin-top:6px}
+.brief .foot{margin:8px 0 0;font-size:11.5px;color:var(--steel);line-height:1.5}
+.sub-row .brief{margin-top:6px}
+@media (max-width:1000px){.record .side{grid-template-columns:1fr}}
+@media (max-width:640px){.hero-card{grid-template-columns:96px 1fr}.hero-card img{width:96px;height:128px}}
+.mock-l{color:var(--steel);margin:22px 0 10px}
+.note-links{grid-column:7/13;margin-top:-8px}
+@media (max-width:1000px){.note-links{grid-column:1/-1}}
+.note-imgs{margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="id">HYEJI JEON / PORTFOLIO</div>
+    <nav class="mono" aria-label="섹션 이동">
+      <a href="#profile"><b>01</b>Profile</a>
+      <a href="#record"><b>02</b>Record</a>
+      <a href="#note"><b>03</b>Note</a>
+      <a href="#works"><b>04</b>Works</a>
+      <a href="#archive"><b>05</b>Side</a>
+      <a href="#contact"><b>06</b>Contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero wrap" id="top">
+  <div class="hero-top mono">
+    <span>Application — TUNE Content Editor</span>
+    <span>JKND · Seongsu, Seoul</span>
+    <span>Rev. 2026.11</span>
+  </div>
+  <div class="hero-grid">
+    <h1 class="name"><span>Hyeji</span><span>Jeon<em>.</em></span></h1>
+    <div class="hero-copy">
+      <p class="role">스튜디오에피소드에서 브랜드의 콘텐츠와 현장, 판매까지 기획해 온 마케터</p>
+      <p class="guide mono">Read in order — 01 자기소개 · 02 이력 · 03 TUNE 발매 분석 · 04 대표 작업 · 05 사이드 프로젝트</p>
+    </div>
+    <div class="hero-card">
+      <img src="media/profile.jpg" width="600" height="689" alt="전혜지 프로필 사진">
+      <dl class="spec">
+        <div><dt>Name</dt><dd>전혜지</dd></div>
+        <div><dt>Now</dt><dd>스튜디오에피소드 브랜디드콘텐츠 매니저 · 약 11개월</dd></div>
+        <div><dt>Applying</dt><dd>[튠(TUNE)] 콘텐츠 에디터</dd></div>
+        <div><dt>SNS</dt><dd><a href="https://www.instagram.com/ddeunegiii/">@ddeunegiii</a> · 덕질 기록 계정</dd></div>
+      </dl>
+    </div>
+  </div>
+
+</header>
+
+<main>
+
+<!-- 01 PROFILE -->
+<section class="wrap" id="profile">
+  <header class="sh">
+    <span class="no">01</span>
+    <h2>Profile<span>자기소개 · 지원 동기</span></h2>
+    <span class="meta mono">Why TUNE</span>
+  </header>
+  <div class="about">
+    <div class="lead">
+      <h3>브랜드의 콘텐츠와 현장, 판매까지 함께 만들어 왔습니다.</h3>
+      <p>스튜디오에피소드 브랜디드콘텐츠 부서에서 11개월 동안 클라이언트 팝업 현장 진행, 셀럽·크리에이터 콘텐츠 가이드, 유튜브·숏폼 포맷 제안, 사내 PB 커머스 운영을 맡아 왔습니다. 콘텐츠를 기획하는 데서 끝내지 않고, 현장과 판매까지 이어지는 흐름을 직접 챙겨 왔습니다.</p>
+      <p>TUNE의 피드에는 스니커즈를 오브제처럼 담은 스틸컷, 계절의 공기가 담긴 룩북, 디자이너 협업 발매가 함께 놓여 있습니다. 프로필의 ‘threads in TUNE’처럼 피드 속 이야기를 성수 매장의 장면으로 잇는 에디터가 되겠습니다.</p>
+    </div>
+    <div class="points">
+      <div class="pt"><span class="mono">A.</span><div><h4>끝까지 챙기는 진행</h4><p>매출이 거의 없던 사내 PB 잇올다이에 합류해 누적 매출 약 2억 원까지 키웠습니다. 콘텐츠·Meta 광고, 채널톡 CS, 물류, 패키지·사내 커머스 담당자 소통, 카페24·스마트스토어·쿠팡 판매 흐름까지 전부 맡고 있습니다.</p></div><img class="pt-img" src="media/edo_hang.jpg" alt="잇올다이 스테이크칩" loading="lazy"></div>
+      <div class="pt"><span class="mono">B.</span><div><h4>현장을 아는 기획</h4><p>오우라링5 잠실 런칭 팝업(8/25 – 9/7) 현장을 진행했습니다. 현장에서 데일리패션뉴스 에디터와 소통했고, 팝업 릴스에 직접 출연했습니다.</p></div><img class="pt-img" src="media/oura_reel.jpg" alt="오우라링 팝업 릴스" loading="lazy"></div>
+      <div class="pt"><span class="mono">C.</span><div><h4>씬 안에서 만드는 콘텐츠</h4><p>서브컬처 덕질 계정을 직접 운영하며 팔로워 226명 계정에서 릴스 최고 13.7만 회를 기록했습니다. 커뮤니티의 말투로 말해야 퍼진다는 것을 숫자로 확인했습니다.</p></div><img class="pt-img" src="media/rl_1.jpg" alt="덕질 계정 릴스" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 RECORD -->
+<section class="wrap" id="record">
+  <header class="sh">
+    <span class="no">02</span>
+    <h2>Record<span>경력 · 학력 · 자격 · 툴</span></h2>
+    <span class="meta mono">2017 – 2026</span>
+  </header>
+  <div class="record">
+    <div class="main">
+      <div class="rows">
+        <div class="row"><div class="when"><b>2025.12 – 현재</b>약 11개월</div><div><h4>스튜디오에피소드<small>브랜디드콘텐츠 부서 매니저</small></h4><ul>
+<li><b>잇올다이 커머스 운영 전반</b> — 매출이 거의 없던 사내 PB에 합류해 누적 매출 약 2억 원까지 성장</li>
+<li>Meta 광고 소재 기획·카피·집행, 소재별 성과 분석과 데일리 리포트</li>
+<li>채널톡 CS, 물류, 패키지 디자이너·사내 커머스 담당자 소통, 카페24·스마트스토어·쿠팡 판매 흐름 관리</li>
+<li>유튜버 황형구 공동구매, NHN 홀덤대회 협찬 광고물, 홍대·동성로 술집 시딩 이벤트</li>
+<li><b>오우라링5 한국 런칭</b> — 잠실 팝업 현장 진행, 데일리패션뉴스 에디터 소통·팝업 릴스 출연, 셀럽 채널 4곳 PPL 가이드, 유튜버 4명 기획 피드백</li>
+<li><b>콘텐츠 제안</b> — 카카오 오키키 채널, 코리아교육그룹 서브채널, 에잇코드 바이럴 캠페인 메인 PM(인플루언서 리스트업·외주 컨택)</li>
+<li><b>AI 활용</b> — AI 광고 영상 소재, 알고케어 VIP 체험 랜딩페이지 제작·배포</li>
+</ul></div></div>
+        <div class="row"><div class="when"><b>2023.07 – 2025.01</b>1년 7개월</div><div><h4>켈리윙즈학원<small>정규직</small></h4><p>수업·커리큘럼 기획, 학부모 대상 블로그 콘텐츠와 홍보물 제작</p></div></div>
+        <div class="row"><div class="when"><b>2023.05 – 2023.11</b>7개월</div><div><h4>개인 쇼핑몰 「헤그헤그」<small>1인 운영</small></h4><p>셀렉 · 스타일링 · 촬영 디렉팅 · 상세페이지 · 고객 응대</p></div></div>
+        <div class="row"><div class="when"><b>2022.09 – 2023.02</b>6개월</div><div><h4>풋락커코리아<small>계약직</small></h4><p>매장 운영, 한정판 발매 진열 방식 제안·매장 적용</p></div></div>
+        <div class="row"><div class="when"><b>2022.03 – 2022.06</b>4개월</div><div><h4>용필름<small>영화 〈독전2〉 의상팀</small></h4><p>캐릭터 분석 기반 의상 콘셉트 보드 제작, 의상 제작 공정 참여</p></div></div>
+        <div class="row"><div class="when"><b>2017 – 2019</b></div><div><h4>니코앤드 · 유니클로<small>리테일</small></h4><p>스타일링 제안, 상품 진열·매장 구성</p></div></div>
+      </div>
+    </div>
+    <div class="side">
+      <div class="blk">
+        <h4>Education</h4>
+        <dl>
+          <div><dt>2022</dt><dd>수원대학교 미술대학 패션디자인과 졸업</dd></div>
+          <div><dt>2025.03</dt><dd>제로베이스 콘텐츠 마케터 스쿨 수료</dd></div>
+        </dl>
+      </div>
+      <div class="blk">
+        <h4>Certificates · Awards</h4>
+        <dl>
+          <div><dt>2023.06</dt><dd>GTQ 그래픽기술자격 1급 · GTQ 일러스트 1급</dd></div>
+          <div><dt>2021.12</dt><dd>제2회 한국 섬유 패션 디자인 콘테스트 특선</dd></div>
+          <div><dt>2021.11</dt><dd>수원대 패션디자인과 졸업 패션쇼 크리틱 우수상</dd></div>
+        </dl>
+      </div>
+      <div class="blk">
+        <h4>Tools</h4>
+        <div class="tools-group"><span class="mono">Adobe · Design</span><div class="tools"><span class="hl">Photoshop</span><span class="hl">Illustrator</span><span>Figma</span><span>CapCut</span><span>미리캔버스</span></div></div>
+        <div class="tools-group"><span class="mono">AI</span><div class="tools"><span>Claude</span><span>ChatGPT</span><span>Gemini</span><span>Higgsfield</span><span>Kling AI</span></div></div>
+        <div class="tools-group"><span class="mono">Ops</span><div class="tools"><span>Notion</span><span>Slack</span><span>Google Sheets</span><span>Meta 광고 관리자</span><span>Cafe24</span><span>채널톡</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 NOTE -->
+<section class="wrap" id="note">
+  <header class="sh">
+    <span class="no">03</span>
+    <h2>Event Note<span>TUNE 발매 분석 · TUNE × Nike 에어포스1 CVS ‘워드로브 언락드’</span></h2>
+    <span class="meta mono">2026.05.01 Release</span>
+  </header>
+  <div class="note-top">
+    <div class="note-lead">
+      <h3>90년대 서울을 로고가 아닌 소재와 신는 경험으로 풀어낸 협업</h3>
+      <p>TUNE이 나이키와 함께 1990년대 서울 거리의 캔버스 에어포스1(CVS)을 다시 만든 발매. TUNE이 내세우는 ‘90년대 서울’을 제품으로 가장 직접 보여 준 사례라 분석 대상으로 선정.</p>
+    </div>
+    <dl class="spec">
+      <div><dt>Product</dt><dd>Air Force 1 CVS ‘Wardrobe Unlocked’ · IR5895-399</dd></div>
+      <div><dt>Concept</dt><dd>오래된 옷장, 구제 랙에서 귀한 것을 찾아내는 순간</dd></div>
+      <div><dt>Design</dt><dd>헤비 왁스 하드 캔버스 · 딥 올리브 단색 · 사포 카드 동봉</dd></div>
+      <div><dt>Release</dt><dd>2026.05.01 TUNE 성수·tune.kr · 05.16 프레임 갤러리 도쿄</dd></div>
+      <div><dt>Price</dt><dd>169,000원</dd></div>
+    </dl>
+    <div class="links note-links"><a class="btn" href="https://hypebeast.kr/2026/4/tune-x-nike-air-force-1-cvscvs-wardrobe-unlocked-info">제품 이미지 보기 · Hypebeast KR</a><a class="btn" href="https://sneakerbardetroit.com/tune-nike-air-force-1-wardrobe-unlocked/">공식 사진 보기 · Sneaker Bar Detroit</a></div>
+  </div>
+
+  <div class="strip note-imgs"><figure class="sf"><button class="frame" type="button"><img src="media/wu_kv.jpg" width="905" height="1168" loading="lazy" alt="캠페인 키 비주얼"></button><figcaption>캠페인 키 비주얼</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/wu_shoe.jpg" width="677" height="832" loading="lazy" alt="제품 컷 · Twilight Marsh"></button><figcaption>제품 컷 · Twilight Marsh</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/wu_receipt.jpg" width="677" height="842" loading="lazy" alt="영수증 형식 캠페인 콘텐츠"></button><figcaption>영수증 형식 캠페인 콘텐츠</figcaption></figure></div>
+  <p class="src mono" style="margin:0 0 24px">Images: TUNE 공식 인스타그램 @tune.kr 캡처</p>
+
+  <div class="eval">
+    <div class="ev">
+      <div class="ev-h"><span class="mono">01</span><b>좋았던 점</b></div>
+      <ol>
+        <li><b>뿌리에서 나온 협업</b>90년대 서울의 CVS를 골라 TUNE의 정체성에서 출발한 협업</li>
+        <li><b>이름이 경험을 설명</b>‘옷장에서 찾은 데드스톡’이라는 이름과 낡아 보이는 올리브 캔버스가 같은 이야기</li>
+        <li><b>낡아가는 것을 가치로</b>왁스가 벗겨지며 한 켤레마다 다르게 낡고, 사포 카드로 직접 길들여 완성하는 ‘내 신발’</li>
+        <li><b>영수증으로 쓴 캠페인</b>제품명·품번·가격을 영수증 형식으로 담고 ‘낡은 옷장 속 데드스톡’ 이야기를 이어 쓴 콘텐츠, 쇼핑의 순간 자체를 컨셉으로 연결</li>
+      </ol>
+    </div>
+    <div class="ev">
+      <div class="ev-h"><span class="mono">02</span><b>아쉬운 점</b></div>
+      <ol>
+        <li><b>지금의 화보에 머문 90년대 이야기</b>모델 화보와 카피로 90년대를 표현했지만, 그때 실제로 CVS를 신었던 사람들의 기록·인터뷰는 부재</li>
+        <li><b>보이지 않는 매장의 장면</b>‘옷장을 연다’는 컨셉이 성수 매장에서 어떻게 경험됐는지 공개 자료로 확인 불가</li>
+        <li><b>모일 곳 없는 길들인 신발</b>사포 카드로 만든 각자의 한 켤레를 공유하고 모아 보는 장치는 공개 자료에서 확인 불가</li>
+        <li><b>변하는 신발, 멈춘 콘텐츠</b>신발은 몇 달에 걸쳐 변하는데, 발매 이후 이어지는 콘텐츠는 공개 자료에서 확인 불가</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="tl-wrap">
+    <div class="ev-h"><span class="mono">03</span><b>바라는 점 · 발매 전후 한 달, 적은 품으로 이어가는 콘텐츠</b></div>
+    <ol class="tl">
+      <li><span class="mono">발매 1주 전</span><h4>UNLOCKED ARCHIVE</h4><p>90년대 CVS 착용 사진·자료를 엮은 카드뉴스 1편, 스토리로 팔로워의 ‘옷장 속 옛 신발’ 사진 모집</p></li>
+      <li><span class="mono">발매일</span><h4>성수 매장 ‘옷장’ 진열</h4><p>옷장·사물함 문을 열어야 보이는 진열, 사포로 바로 길들여 보는 샌딩 코너</p></li>
+      <li><span class="mono">발매 후 2주</span><h4>#WARDROBEUNLOCKED</h4><p>구매자가 길들인 신발 사진을 리그램해 스토리 하이라이트로 모음</p></li>
+      <li><span class="mono">발매 후 1개월</span><h4>베스트 한 켤레</h4><p>가장 멋지게 길들인 3켤레를 골라 피드 1편과 매장 진열 한 칸으로 소개, 소정 리워드</p></li>
+    </ol>
+    <p class="src mono">Sources: <a href="https://hypebeast.kr/2026/4/tune-x-nike-air-force-1-cvscvs-wardrobe-unlocked-info">Hypebeast KR</a> · <a href="https://hypebeast.com/2026/4/tune-nike-air-force-1-cvs-wardrobe-unlocked-ir5895-399-release-info">Hypebeast</a> · <a href="https://sneakerbardetroit.com/tune-nike-air-force-1-wardrobe-unlocked/">Sneaker Bar Detroit</a> · 발매 방식과 당일 매장 운영은 공개 자료에서 미확인</p>
+  </div>
+</section>
+
+<!-- 04 WORKS -->
+<section class="wrap" id="works">
+  <header class="sh">
+    <span class="no">04</span>
+    <h2>Selected Works<span>대표 작업 · 주요 업무별 정리</span></h2>
+    <span class="meta mono">07 Projects · 02 Channels</span>
+  </header>
+
+  <div class="table-scroll">
+  <table class="index">
+    <thead><tr><th>No.</th><th></th><th>Project</th><th class="hide-s">Period</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="4"><span class="mono">01</span> 스테이크칩 커머스</td></tr>
+      <tr data-go="w01"><td>W—01</td><td class="th"><a href="#w01" tabindex="-1"><img src="media/edo_hang.jpg" alt="" loading="lazy"></a></td><td class="t"><a href="#w01">Eat or Die Commerce</a><span class="k">커머스 운영 전반 · 광고 소재 · NHN 홀덤대회 제작물 · 술집 시딩 · 공동구매·패키지</span></td><td class="yr hide-s">2026.04 –</td></tr>
+      <tr class="grp"><td colspan="4"><span class="mono">02</span> 브랜디드 콘텐츠</td></tr>
+      <tr data-go="w02"><td>W—02</td><td class="th"><a href="#w02" tabindex="-1"><img src="media/oura_gb1.jpg" alt="" loading="lazy"></a></td><td class="t"><a href="#w02">Oura Ring 5 Launch</a><span class="k">잠실 런칭 팝업 현장 진행 · 매거진 에디터 소통 · 셀럽 PPL 가이드</span></td><td class="yr hide-s">2026.08–진행 중</td></tr>
+      <tr data-go="w03"><td>W—03</td><td class="th"><a href="#w03" tabindex="-1"><img src="media/ec_22.jpg" alt="" loading="lazy"></a></td><td class="t"><a href="#w03">8code Viral Campaign</a><span class="k">사주 앱 에잇코드 바이럴 캠페인 · 메인 PM</span></td><td class="yr hide-s">2026.10 –</td></tr>
+      <tr data-go="w04"><td>W—04</td><td class="th"><a href="#w04" tabindex="-1"><img src="media/pp_d4_1.jpg" alt="" loading="lazy"></a></td><td class="t"><a href="#w04">Kakao Okiki</a><span class="k">카카오 오키키 채널 1030 콘텐츠 제안 · MC 후보 제안</span></td><td class="yr hide-s">2026.06</td></tr>
+      <tr class="grp"><td colspan="4"><span class="mono">03</span> 기획서</td></tr>
+      <tr data-go="w05"><td>W—05</td><td class="th"><a href="#w05" tabindex="-1"><img src="media/vn_1.jpg" alt="" loading="lazy"></a></td><td class="t"><a href="#w05">Find Your Vans</a><span class="k">반스 60주년 성수 아카이브 팝업 기획안</span></td><td class="yr hide-s">2026.10</td></tr>
+      <tr data-go="w06"><td>W—06</td><td class="th"><a href="#w06" tabindex="-1"><img src="media/hx_offline.jpg" alt="" loading="lazy"></a></td><td class="t"><a href="#w06">Helinox Wear Game</a><span class="k">매장·온라인 체험 게임 기획안 「꽉 찬 경량」</span></td><td class="yr hide-s">2026.10</td></tr>
+      <tr data-go="w07"><td>W—07</td><td class="th"><a href="#w07" tabindex="-1"><img src="media/pp_d2_1.jpg" alt="" loading="lazy"></a></td><td class="t"><a href="#w07">KEG Channel Proposal</a><span class="k">코리아교육그룹 서브채널 「쉬었음, 그게 왜?」 제안서</span></td><td class="yr hide-s">2026.07</td></tr>
+      <tr class="grp"><td colspan="4"><span class="mono">04</span> 사이드 프로젝트</td></tr>
+      <tr data-go="archive"><td>A—01</td><td class="th"><a href="#archive" tabindex="-1"><img src="media/ig_ddeun_reels.jpg" alt="" loading="lazy"></a></td><td class="t"><a href="#archive">@ddeunegiii · @yeopjarri</a><span class="k">서브컬처 덕질 계정 「뜨내깅」 · 직장인 숏폼 「옆자리그녀」</span></td><td class="yr hide-s">운영 중</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="cat"><span class="mono">01</span><h3>스테이크칩 커머스</h3><span class="mono">W—01</span><p>사내 PB 잇올다이의 콘텐츠·광고·CS·물류·판매 채널 전체 운영</p></div>
+  <article class="w" id="w01">
+    <div class="w-top"><span class="mono no">W—01</span><h3>Eat or Die Commerce</h3><span class="tag">진행 중</span><span class="mono per">2026.04 – 현재</span></div>
+    <p class="w-ko">잇올다이 스테이크칩 · 사내 PB 커머스 운영 전반</p>
+    <div class="brief"><div><b class="lb">[주제]</b><p>매출이 거의 없던 소고기 스낵 D2C 브랜드의 Meta 광고 · 카카오톡 CRM · 자사몰 운영</p></div><div><b class="lb">[담당 업무]</b><ul><li>Meta 광고 소재 기획, 성과 기반 개선</li><li>카카오톡 채널 구축, 쿠폰·메시지·발송 타이밍 기획</li><li>상세페이지 리뉴얼, 가격 구성</li><li>채널톡 CS · 물류 · 사내 커머스 담당자 소통</li><li>카페24 · 스마트스토어 · 쿠팡 판매 흐름 관리</li></ul></div><div><b class="lb">[성과]</b><ul><li>2026 누적 매출 <mark>198,445,460원</mark></li><li>광고 집행 후 자사채널 월평균 매출 <mark>약 25배</mark></li><li>Meta 광고비 5,221만 원 · ROAS 289%</li><li>카카오톡 CRM 2건 · 1,026명 발송</li></ul><p class="foot">* ROAS는 광고비+판매수수료 기준 · 월평균은 광고 전 1–4월 vs 5·6·8·9·10월 자사채널</p></div></div><figure class="chart"><div class="chart-h"><b>월별 총매출 (2026)</b><span>단위 만 원</span></div>
+<svg viewBox="0 0 1000 300" role="img" aria-label="2026년 월별 총매출 막대그래프. 광고 집행 전 1~4월 월 117만~247만 원, 5월 5,027만 원, 6월 3,769만 원, 8월 2,592만 원, 9월 3,598만 원, 10월 3,325만 원, 11월 888만 원(집계 중)">
+<line class="grid" x1="20" x2="980" y1="178.5" y2="178.5"/><line class="grid" x1="20" x2="980" y1="97.0" y2="97.0"/><line class="base" x1="20" x2="980" y1="260" y2="260"/>
+<line class="start" x1="369.1" x2="369.1" y1="30" y2="260"/><text class="st" x="361.1" y="80">Meta 광고 시작</text>
+<rect class="pre" x="46.2" y="254.3" width="34.9" height="5.7"/><rect class="pre" x="133.5" y="249.9" width="34.9" height="10.1"/><rect class="pre" x="220.7" y="255.2" width="34.9" height="4.8"/><rect class="pre" x="308.0" y="254.3" width="34.9" height="5.7"/><rect class="post" x="395.3" y="55.2" width="34.9" height="204.8"/><rect class="post" x="482.5" y="106.4" width="34.9" height="153.6"/><rect class="post" x="569.8" y="258.0" width="34.9" height="2.0"/><rect class="post" x="657.1" y="154.4" width="34.9" height="105.6"/><rect class="post" x="744.4" y="113.4" width="34.9" height="146.6"/><rect class="post" x="831.6" y="124.5" width="34.9" height="135.5"/><rect class="cur" x="918.9" y="223.8" width="34.9" height="36.2"/><text class="mo" x="63.6" y="286">1월</text><text class="mo" x="150.9" y="286">2월</text><text class="mo" x="238.2" y="286">3월</text><text class="mo" x="325.5" y="286">4월</text><text class="val" x="412.7" y="47.2">5,027</text><text class="mo" x="412.7" y="286">5월</text><text class="val" x="500.0" y="98.4">3,769</text><text class="mo" x="500.0" y="286">6월</text><text class="mo" x="587.3" y="286">7월</text><text class="note7" x="587.3" y="246.0">리뉴얼</text><text class="note7" x="587.3" y="230.0">판매 중단</text><text class="val" x="674.5" y="146.4">2,592</text><text class="mo" x="674.5" y="286">8월</text><text class="val" x="761.8" y="105.4">3,598</text><text class="mo" x="761.8" y="286">9월</text><text class="val" x="849.1" y="116.5">3,325</text><text class="mo" x="849.1" y="286">10월</text><text class="val" x="936.4" y="215.8">888</text><text class="mo" x="936.4" y="286">11월</text></svg>
+<figcaption>회색은 광고 집행 전 · 5월에 유튜브 공동구매 1,351만 원 포함 · 7월 리뉴얼로 판매 중단 · 11월 집계 중</figcaption></figure><div class="sub-row"><div class="sub-h"><span class="mono">A</span><b>광고 소재 · 성과 분석</b><span class="mono">2026.05 –</span></div><p>구매 전환 1위 소재 「소고기 광인 주목」 654건 · ROAS 246% · 촬영이 어려운 장면은 AI 영상 소재로 제작</p><div class="strip"><figure class="sf"><video src="media/v09.mp4" poster="media/v09_poster.jpg" controls muted playsinline preload="none" width="540" height="958"></video><figcaption>AI 영상 · 열풍 건조 과정</figcaption></figure><figure class="sf"><video src="media/v03.mp4" poster="media/v03_poster.jpg" controls muted playsinline preload="none" width="540" height="960"></video><figcaption>AI 영상 · 8비트 게임 컨셉</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/rn_1.jpg" width="540" height="675" loading="lazy" alt="이미지 광고 소재"></button><figcaption>이미지 광고 소재</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/dp_08.jpg" width="540" height="960" loading="lazy" alt="상세페이지 리뉴얼"></button><figcaption>상세페이지 리뉴얼</figcaption></figure></div></div><div class="sub-row"><div class="sub-h"><span class="mono">B</span><b>NHN 홀덤대회 협찬 광고물</b><span class="mono">2026.11</span></div><p>카피 「오늘은 스테이크칩에 배팅하세요」 「칩 떨어지신 분들 싸게 충전해 드립니다」 · 중계 광고 영상 · 테이블 QR 판넬 2종 · X배너</p><div class="strip"><figure class="sf"><video src="media/nhn_v4.mp4" poster="media/nhn_v4_poster.jpg" controls muted playsinline preload="none" width="1280" height="720"></video><figcaption>중계 광고 영상 · 최종본</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/nhn_v2_p1.jpg" width="367" height="624" loading="lazy" alt="QR 판넬 1안"></button><figcaption>QR 판넬 1안</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/nhn_v2_p2.jpg" width="367" height="624" loading="lazy" alt="QR 판넬 2안 · 시크릿 초특가 링크"></button><figcaption>QR 판넬 2안 · 시크릿 초특가 링크</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/nhn_v2_xb.jpg" width="600" height="1800" loading="lazy" alt="X배너 60×180cm"></button><figcaption>X배너 60×180cm</figcaption></figure></div></div><div class="sub-row"><div class="sub-h"><span class="mono">C</span><b>홍대·동성로 술집 시딩</b><span class="mono">2026.05</span></div><p>매장별 위스키·맥주 페어링 · 사장님용 QR 포스터 · 스토리 태그 이벤트 「완판 기록의 스테이크칩이 이 매장에 떴다」</p><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/sd_1.jpg" width="450" height="600" loading="lazy" alt="미로길 · 테이블 QR"></button><figcaption>미로길 · 테이블 QR</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/sd_2.jpg" width="450" height="600" loading="lazy" alt="미로길 · 위스키 페어링"></button><figcaption>미로길 · 위스키 페어링</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/sd_3.jpg" width="600" height="600" loading="lazy" alt="키비 · 매장 POP"></button><figcaption>키비 · 매장 POP</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/sd_4.jpg" width="600" height="600" loading="lazy" alt="키비 · 증정 이벤트 보드"></button><figcaption>키비 · 증정 이벤트 보드</figcaption></figure></div></div><div class="sub-row"><div class="sub-h"><span class="mono">D</span><b>황형구 유튜브 공동구매</b><span class="mono">2026.04 – 05 · 완료</span></div><div class="brief"><div><b class="lb">[주제]</b><p>크리에이터 유튜브 콘텐츠와 연계한 공동구매</p></div><div><b class="lb">[담당 업무]</b><ul><li>콘텐츠 제작 가이드 작성</li><li>상세페이지 · 가격 구성안 기획</li><li>CS 운영, 판매 결과 정리</li></ul></div><div><b class="lb">[성과]</b><ul><li><mark>314건 판매</mark> · 총매출 13,512,900원</li></ul></div></div><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/hhg_yt.jpg" width="1091" height="610" loading="lazy" alt="황형구 유튜브 콘텐츠"></button><figcaption>황형구 유튜브 콘텐츠</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/gg_5.jpg" width="540" height="960" loading="lazy" alt="공구 상세페이지"></button><figcaption>공구 상세페이지</figcaption></figure></div><div class="links"><a class="btn" href="https://www.youtube.com/watch?v=oKA3DaMX-m4">공동구매 영상</a><a class="btn" href="https://what-a-drop.com/surl/P/25">공구 판매 페이지</a></div></div><div class="sub-row"><div class="sub-h"><span class="mono">E</span><b>기프트박스 패키지 디자인 디렉션</b><span class="mono">2026</span></div><p>패키지 디자이너와 시안 1차 → 4차 → Final 피드백 · 디자인 방향 정리</p><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/pp_d7_17.jpg" width="900" height="506" loading="lazy" alt="A안 목업"></button><figcaption>A안 목업</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/pp_d7_19.jpg" width="900" height="506" loading="lazy" alt="B안 그래픽 패턴"></button><figcaption>B안 그래픽 패턴</figcaption></figure></div></div>
+  </article>
+  <div class="cat"><span class="mono">02</span><h3>브랜디드 콘텐츠</h3><span class="mono">W—02 – 04</span><p>클라이언트 캠페인의 현장 운영 · 콘텐츠 진행 · 채널 콘텐츠 제안</p></div>
+  <article class="w" id="w02">
+    <div class="w-top"><span class="mono no">W—02</span><h3>Oura Ring 5 Launch</h3><span class="tag">커머스 대행</span><span class="mono per">2026.08 – 진행 중</span></div>
+    <p class="w-ko">오우라링5 한국 런칭 · 잠실 팝업 · 크리에이터 콘텐츠</p>
+    <div class="brief"><div><b class="lb">[주제]</b><p>오우라링5 한국 정식 런칭에 맞춘 잠실 팝업과 셀럽·크리에이터 콘텐츠</p></div><div><b class="lb">[담당 업무]</b><ul><li>잠실 런칭 팝업 현장 진행</li><li>데일리패션뉴스 에디터 소통 · 팝업 릴스 출연</li><li>셀럽 채널 4곳 PPL 콘텐츠 가이드</li><li>인플루언서 유튜브 가이드 작성 · 업로드 관리</li><li>VIP 초대 가이드북 웹페이지 제작</li></ul></div><div><b class="lb">[진행 내용]</b><ul><li>잠실 롯데월드타워몰 팝업 <mark>8/25 – 9/7</mark> 종료</li><li>셀럽 채널 4곳 PPL 가이드 전달</li><li>인플루언서 유튜브 가이드 작성 · 영상 순차 업로드 중</li></ul></div></div><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/oura_reel.jpg" width="266" height="474" loading="lazy" alt="팝업 릴스 · 직접 출연"></button><figcaption>팝업 릴스 · 직접 출연</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/oura_gb1.jpg" width="800" height="600" loading="lazy" alt="VIP 초대 가이드북"></button><figcaption>VIP 초대 가이드북</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/ppl_1.jpg" width="1334" height="750" loading="lazy" alt="PPL 가이드 표지"></button><figcaption>PPL 가이드 표지</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/ppl_7.jpg" width="1334" height="750" loading="lazy" alt="조승연의 탐구생활 가이드"></button><figcaption>조승연의 탐구생활 가이드</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/ppl_9.jpg" width="1334" height="750" loading="lazy" alt="오늘의 주우재 가이드"></button><figcaption>오늘의 주우재 가이드</figcaption></figure></div><div class="links"><a class="btn" href="https://www.instagram.com/reel/DcnrGqGBuMv/">팝업 릴스</a><a class="btn" href="https://ouraring5-vip-only-studioepisode.capo314925.chatgpt.site/">VIP 가이드북</a><a class="btn" href="https://www.youtube.com/watch?v=sYHg34qOvyk">업로드 영상 · 미키피디아</a></div>
+  </article>
+  <article class="w" id="w03">
+    <div class="w-top"><span class="mono no">W—03</span><h3>8code Viral Campaign</h3><span class="tag">메인 PM</span><span class="mono per">2026.10 – 진행 중</span></div>
+    <p class="w-ko">사주 앱 「에잇코드」 4개월 바이럴 캠페인</p>
+    <div class="brief"><div><b class="lb">[주제]</b><p>명리학자 대표의 풀이를 코딩한 ‘사람 같은 사주앱’ 바이럴 캠페인</p></div><div><b class="lb">[담당 업무]</b><ul><li>메인 PM</li><li>2차 제안서 콘텐츠 아이디어 파트</li><li>바이럴 인플루언서 리스트업</li><li>외주 업체 컨택</li></ul></div><div><b class="lb">[진행 현황]</b><ul><li><mark>포맷 3종</mark> · 인생 썰 · 고민 상담 · 대표 브랜딩</li><li>2026.11 – 2027.02 진행 중</li></ul></div></div><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/ec_22.jpg" width="1333" height="750" loading="lazy" alt="포맷별 소재·화자·역할"></button><figcaption>포맷별 소재·화자·역할</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/ec_25.jpg" width="1333" height="750" loading="lazy" alt="FORMAT 1 · 하겠습니다.. 아니"></button><figcaption>FORMAT 1 · 하겠습니다.. 아니</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/ec_31.jpg" width="1333" height="750" loading="lazy" alt="FORMAT 2 · 동상이몽 블라인드 사주"></button><figcaption>FORMAT 2 · 동상이몽 블라인드 사주</figcaption></figure></div>
+  </article>
+  <article class="w" id="w04">
+    <div class="w-top"><span class="mono no">W—04</span><h3>Kakao Okiki</h3><span class="tag">제안</span><span class="mono per">2026.06</span></div>
+    <p class="w-ko">카카오 비공식 유튜브 채널 「오키키 ㅇㅋㅋ」 콘텐츠 제안</p>
+    <div class="brief"><div><b class="lb">[주제]</b><p>1030 타깃 카카오 비공식 유튜브 채널의 운영 방향과 콘텐츠 제안</p></div><div><b class="lb">[담당 업무]</b><ul><li>채널 진단 · 레퍼런스 리서치</li><li>포맷 A·B안 기획</li><li>MC 후보 제안 · 기획안 작성</li></ul></div><div><b class="lb">[제안 내용]</b><ul><li>A안 <mark>팟캐스트형 고민상담</mark> · B안 세대별 토크형</li><li>카카오톡 오픈채팅으로 사연을 받는 구조</li><li>MC 후보 김민경 · 가비 · 유병재</li></ul></div></div><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/pp_d4_1.jpg" width="900" height="506" loading="lazy" alt="제안서 표지"></button><figcaption>제안서 표지</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/kk_8.jpg" width="1334" height="750" loading="lazy" alt="채널 방향성 AS-IS → TO-BE"></button><figcaption>채널 방향성 AS-IS → TO-BE</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/pp_d4_28.jpg" width="900" height="506" loading="lazy" alt="포맷 레퍼런스"></button><figcaption>포맷 레퍼런스</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/pp_d4_37.jpg" width="900" height="506" loading="lazy" alt="카카오 오픈채팅 사연 구조"></button><figcaption>카카오 오픈채팅 사연 구조</figcaption></figure></div>
+  </article>
+  <div class="cat"><span class="mono">03</span><h3>기획서</h3><span class="mono">W—05 – 07</span><p>팝업 · 매장 경험 기획안과 채널 운영 제안서</p></div>
+  <article class="w" id="w05">
+    <div class="w-top"><span class="mono no">W—05</span><h3>Find Your Vans</h3><span class="tag">기획안</span><span class="mono per">2026.10</span></div>
+    <p class="w-ko">반스 60주년 · 성수 아카이브 팝업 기획안</p>
+    <div class="brief"><div><b class="lb">[주제]</b><p>누구나 한 켤레쯤 신어 본 반스의 60주년을 소비자의 사진첩 속 추억으로 풀어낸 캠페인</p></div><div><b class="lb">[담당 업무]</b><ul><li>컨셉 · 참여 흐름 FIND → SHARE → ADD</li><li>공간 동선 · 현장 체험 설계</li><li>6주 운영 플랜</li></ul></div><div><b class="lb">[기획 핵심]</b><ul><li>모인 사진·사연을 <mark>연도순 아카이브</mark>로 전시</li><li>폴라로이드 체험 → 시착·구매 연결</li></ul></div></div><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/vn_1.jpg" width="1467" height="825" loading="lazy" alt="기획안 표지"></button><figcaption>기획안 표지</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/vn_14.jpg" width="1467" height="825" loading="lazy" alt="찾기 → 나누기 → 더하기"></button><figcaption>찾기 → 나누기 → 더하기</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/vn_18.jpg" width="1467" height="825" loading="lazy" alt="현장 체험 구성"></button><figcaption>현장 체험 구성</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/vn_20.jpg" width="1467" height="825" loading="lazy" alt="성수 아카이브 공간"></button><figcaption>성수 아카이브 공간</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/vn_22.jpg" width="1467" height="825" loading="lazy" alt="기대 결과"></button><figcaption>기대 결과</figcaption></figure></div>
+  </article>
+  <article class="w" id="w06">
+    <div class="w-top"><span class="mono no">W—06</span><h3>Helinox Wear Game</h3><span class="tag">팀 기획안</span><span class="mono per">2026.10</span></div>
+    <p class="w-ko">헬리녹스 웨어 「꽉 찬 경량」 · 매장·온라인 게임</p>
+    <div class="brief"><div><b class="lb">[주제]</b><p>30개 패널로 꽉 채우고도 320g인 다운을 손과 몸으로 체감하게 하는 게임</p></div><div><b class="lb">[담당 업무]</b><ul><li>온라인 게임 「꽉 채워봐 320g」</li><li>매장 게임 「320g을 맞춰라」</li><li>체험 동선 설계</li></ul></div><div><b class="lb">[기획 핵심]</b><ul><li>게임 → 들어보기 → 착용 → 접어보기 <mark>체험 동선</mark></li><li>완성 재킷 이미지·기록 SNS 공유 연결</li></ul></div></div><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/hx_offline.jpg" width="1000" height="667" loading="lazy" alt="매장 게임 공간 시안"></button><figcaption>매장 게임 공간 시안</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/hx_game1.jpg" width="800" height="600" loading="lazy" alt="온라인 게임 시작 화면"></button><figcaption>온라인 게임 시작 화면</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/hx_game2.jpg" width="800" height="600" loading="lazy" alt="플레이 화면"></button><figcaption>플레이 화면</figcaption></figure></div>
+  </article>
+  <article class="w" id="w07">
+    <div class="w-top"><span class="mono no">W—07</span><h3>KEG Channel Proposal</h3><span class="tag">제안서</span><span class="mono per">2026.07</span></div>
+    <p class="w-ko">코리아교육그룹 서브채널 「쉬었음, 그게 왜?」 제안서</p>
+    <div class="brief"><div><b class="lb">[주제]</b><p>방향을 잃은 20~50대에게 “완성되지 않아도 괜찮다”고 말하는 사연 기반 커리어 채널</p></div><div><b class="lb">[담당 업무]</b><ul><li>타깃 정의 · 채널 메시지</li><li>포맷 2종 기획</li><li>출연자 캐스팅 제안</li></ul></div><div><b class="lb">[제안 내용]</b><ul><li><mark>포맷 2종</mark> · 커리어 고민 상담소 · 셀럽 직업 수업 체험기</li><li>출연 제안 엄지윤 · 조이 · 송은이</li></ul></div></div><div class="strip"><figure class="sf"><button class="frame" type="button"><img src="media/pp_d2_1.jpg" width="700" height="990" loading="lazy" alt="현황 파악 · 문제 진단"></button><figcaption>현황 파악 · 문제 진단</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/pp_d2_9.jpg" width="700" height="990" loading="lazy" alt="예상 출연진 비교"></button><figcaption>예상 출연진 비교</figcaption></figure><figure class="sf"><button class="frame" type="button"><img src="media/pp_d2_14.jpg" width="700" height="990" loading="lazy" alt="출연자 제안: 엄지윤"></button><figcaption>출연자 제안: 엄지윤</figcaption></figure></div>
+  </article>
+</section>
+
+<!-- 05 ARCHIVE -->
+<section class="wrap" id="archive">
+  <header class="sh">
+    <span class="no">05</span>
+    <h2>Side Project<span>사이드 프로젝트 · 직접 기획·촬영·편집하는 SNS 채널 · 공고의 SNS 제출 항목</span></h2>
+    <span class="meta mono">02 Channels</span>
+  </header>
+  <div class="arch two">
+    <div class="acard">
+      <span class="mono"><span>A—01</span><span>운영 중</span></span>
+      <h3>@ddeunegiii<span>서브컬처 덕질 기록 「뜨내깅」</span></h3>
+      <div class="stat"><div><b class="num">35.6만</b><span>릴스 누적 조회</span></div><div><b class="num">13.7만</b><span>최고 조회</span></div><div><b class="num">2</b><span>10만+ 릴스</span></div></div>
+      <p>굿즈 언박싱, 한정판 콜라보 굿즈, 코스프레처럼 팬이 실제로 돈과 시간을 쓰는 순간을 릴스로 제작. 기획·촬영·편집 전부 직접 진행.</p>
+      <div class="reels">
+        <figure><img src="media/rl_1.jpg" width="170" height="266" loading="lazy" alt="피규어 언박싱 릴스"><figcaption>▶ 13.7만</figcaption></figure>
+        <figure><img src="media/rl_2.jpg" width="170" height="266" loading="lazy" alt="한정판 콜라보 카메라 릴스"><figcaption>▶ 10.9만</figcaption></figure>
+        <figure><img src="media/rl_3.jpg" width="171" height="266" loading="lazy" alt="애니 굿즈 티셔츠 리뷰 릴스"><figcaption>▶ 9.4만</figcaption></figure>
+      </div>
+      <div class="links"><a class="btn" href="https://www.instagram.com/ddeunegiii/">Instagram</a></div>
+    </div>
+    <div class="acard">
+      <span class="mono"><span>A—02</span><span>운영 중</span></span>
+      <h3>@yeopjarri<span>직장인 공감 숏폼 「옆자리그녀」</span></h3>
+      <div class="stat"><div><b class="num">4.3만</b><span>최고 조회</span></div><div><b class="num">5천</b><span>평균 조회</span></div></div>
+      <p>동료의 말투와 취향을 캐릭터로 만든 직장인 코미디 숏폼. 동기와 공동 운영, 콘셉트·캐릭터 기획, 출연, CapCut 편집·업로드 담당.</p>
+      <div class="reels one"><figure><img src="media/yj_2.jpg" width="383" height="594" loading="lazy" alt="연차별 사무실 책상 릴스"><figcaption>▶ 4.3만 · 연차별 사무실 책상</figcaption></figure></div>
+      <div class="links"><a class="btn" href="https://www.instagram.com/yeopjarri/">Instagram</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <p class="big">Let's tune<br>the scene<em>.</em></p>
+    <div class="cgrid">
+      <div><span class="mono">Email</span><span class="v">seri9777@naver.com</span></div>
+      <div><span class="mono">Phone</span><span class="v num">010-4016-3845</span></div>
+      <div><span class="mono">Instagram</span><a href="https://www.instagram.com/ddeunegiii/">@ddeunegiii ↗</a></div>
+    </div>
+    <div class="foot mono"><span>전혜지 · Portfolio for TUNE Content Editor</span><a href="#top" style="text-decoration:none">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="이미지 크게 보기">
+  <img id="lbimg" src="" alt="">
+  <div class="lbbar"><span id="lbcap"></span><button type="button" id="lbclose">CLOSE ✕</button></div>
+</dialog>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'),img=document.getElementById('lbimg'),cap=document.getElementById('lbcap');
+  document.querySelectorAll('.frame').forEach(function(b){
+    b.addEventListener('click',function(){
+      var i=b.querySelector('img');if(!i)return;
+      img.src=i.currentSrc||i.src;img.alt=i.alt;
+      var fc=b.parentNode.querySelector('figcaption');cap.textContent=fc?fc.textContent:i.alt;
+      try{lb.showModal()}catch(e){lb.setAttribute('open','')}
+    });
+  });
+  document.getElementById('lbclose').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  document.querySelectorAll('.index tr[data-go]').forEach(function(r){
+    r.addEventListener('click',function(e){if(e.target.closest('a'))return;var t=document.getElementById(r.dataset.go);if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
+  });
+})();
+</script>
+</body>
+</html>
